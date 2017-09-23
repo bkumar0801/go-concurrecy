@@ -19,6 +19,7 @@ One way to think about this model is to consider a typical single-threaded progr
 A goroutine is a function that is capable of running concurrently with other functions. To create a goroutine we use the keyword ``` go ``` followed by a function invocation:
 
 ```
+//greetings.go
 package main
 import (
          "fmt"
