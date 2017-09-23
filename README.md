@@ -20,6 +20,7 @@ A goroutine is a function that is capable of running concurrently with other fun
 
 ```
 //greetings.go
+
 package main
 import (
          "fmt"
