@@ -15,3 +15,23 @@ Goroutines are multiplexed onto multiple OS threads so if one should block, such
 Prefix a function or method call with the go keyword to run the call in a new goroutine. When the call completes, the goroutine exits, silently.
 
 One way to think about this model is to consider a typical single-threaded program running on one CPU. It has no need for synchronization primitives. Now run another such instance; it too needs no synchronization. Now let those two communicate; if the communication is the synchronizer, there's still no need for other synchronization. Unix pipelines, for example, fit this model perfectly. Although Go's approach to concurrency originates in Hoare's Communicating Sequential Processes (CSP), it can also be seen as a type-safe generalization of Unix pipes.
+
+A goroutine is a function that is capable of running concurrently with other functions. To create a goroutine we use the keyword go followed by a function invocation:
+
+package main
+import (
+         "fmt"
+         "time"
+      )
+func Greet(msg string){
+   for i:=0; ; i++ {
+      fmt.Println(msg, i)
+      time.Sleep(time.Second)
+   }
+}
+func main() {
+   go Greet("Hello,Go Dev!!")
+   time.Sleep(2*time.Second)
+}
+
+
