@@ -16,7 +16,7 @@ Prefix a function or method call with the go keyword to run the call in a new go
 
 One way to think about this model is to consider a typical single-threaded program running on one CPU. It has no need for synchronization primitives. Now run another such instance; it too needs no synchronization. Now let those two communicate; if the communication is the synchronizer, there's still no need for other synchronization. Unix pipelines, for example, fit this model perfectly. Although Go's approach to concurrency originates in Hoare's Communicating Sequential Processes (CSP), it can also be seen as a type-safe generalization of Unix pipes.
 
-A goroutine is a function that is capable of running concurrently with other functions. To create a goroutine we use the keyword go followed by a function invocation:
+A goroutine is a function that is capable of running concurrently with other functions. To create a goroutine we use the keyword ``` go ``` followed by a function invocation:
 
 ```
 package main
@@ -35,4 +35,4 @@ func main() {
    time.Sleep(2*time.Second)
 }
 ```
-
+This program consists of two goroutines. The first goroutine is implicit and is the main function itself. The second goroutine is created when we call ```go Greet("Hello,Go Dev!!")```. Normally when we invoke a function our program will execute all the statements in a function and then return to the next line following the invocation. With a goroutine we return immediately to the next line and don't wait for the function to complete. This is why the call to the ```time.Sleep(2*time.Second)``` function has been included to wait for seconds; without it the program would exit before being given the opportunity to print all the numbers.
