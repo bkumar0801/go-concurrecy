@@ -8,6 +8,10 @@ In any other mainstream programming language, when concurrent threads need to sh
 
 A goroutine is a lightweight thread managed by the Go runtime.
 
-Goroutines run in the same address space, so access to shared memory must be synchronized. 
+Goroutines run in the same address space, so access to shared memory must be synchronized. It is lightweight, costing little more than the allocation of stack space. And the stacks start small, so they are cheap, and grow by allocating (and freeing) heap storage as required.
+
+Goroutines are multiplexed onto multiple OS threads so if one should block, such as while waiting for I/O, others continue to run. Their design hides many of the complexities of thread creation and management.
+
+Prefix a function or method call with the go keyword to run the call in a new goroutine. When the call completes, the goroutine exits, silently.
 
 One way to think about this model is to consider a typical single-threaded program running on one CPU. It has no need for synchronization primitives. Now run another such instance; it too needs no synchronization. Now let those two communicate; if the communication is the synchronizer, there's still no need for other synchronization. Unix pipelines, for example, fit this model perfectly. Although Go's approach to concurrency originates in Hoare's Communicating Sequential Processes (CSP), it can also be seen as a type-safe generalization of Unix pipes.
