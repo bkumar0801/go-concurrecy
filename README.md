@@ -1,3 +1,12 @@
+# Processes, threads and goroutines
+
+Go has goroutines which are the foundation for its concurrency story. Let's step back for a moment and explore the history that leads us to goroutines.
+
+## Processes
+In the beginning, computers ran one job at a time in a batch processing model. In the 60’s a desire for more interactive forms of computing lead to the development of multiprocessing, or time sharing, operating systems. By the 70’s this idea was well established for network servers, ftp, telnet, rlogin, and later Tim Burners-Lee’s CERN httpd, handled each incoming network connections by forking a child process.
+
+In a time-sharing system, the operating systems maintains the illusion of concurrency by rapidly switching the attention of the CPU between active processes by recording the state of the current process, then restoring the state of another. This is called context switching.
+
 # Concurrency In GO
 
 Go is designed with concurrency in mind and allows us to build complex concurrent pipelines. Go’s approach to concurrency can be best phrased by
