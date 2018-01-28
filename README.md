@@ -1,4 +1,4 @@
-References : Rob Pike, Dave Cheney, William Kennedy
+References : Talks and blog from [Rob Pike, Dave Cheney, William Kennedy]
 # Processes, threads and goroutines
 
 Go has goroutines which are the foundation for its concurrency story. Let's step back for a moment and explore the history that leads us to goroutines.
